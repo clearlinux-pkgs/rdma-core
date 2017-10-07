@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 15
-Release  : 2
+Release  : 3
 URL      : https://github.com/linux-rdma/rdma-core/releases/download/v15/rdma-core-15.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/releases/download/v15/rdma-core-15.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -70,6 +70,14 @@ Group: Documentation
 doc components for the rdma-core package.
 
 
+%package extras
+Summary: extras components for the rdma-core package.
+Group: Default
+
+%description extras
+extras components for the rdma-core package.
+
+
 %package lib
 Summary: lib components for the rdma-core package.
 Group: Libraries
@@ -87,15 +95,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506723259
+export SOURCE_DATE_EPOCH=1507409824
 mkdir clr-build
 pushd clr-build
-cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_INSTALL_LIBDIR:PATH=lib64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core
+cmake .. -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS:BOOL=ON -DLIB_INSTALL_DIR:PATH=/usr/lib64 -DCMAKE_AR=/usr/bin/gcc-ar -DLIB_SUFFIX=64 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_RANLIB=/usr/bin/gcc-ranlib -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core
 make VERBOSE=1  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1506723259
+export SOURCE_DATE_EPOCH=1507409824
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -106,6 +114,7 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+%exclude /usr/bin/rxe_cfg
 %exclude /usr/libexec/truescale-serdes.cmds
 /usr/bin/cmtime
 /usr/bin/ib_acme
@@ -130,7 +139,6 @@ popd
 /usr/bin/rping
 /usr/bin/rstream
 /usr/bin/run_srp_daemon
-/usr/bin/rxe_cfg
 /usr/bin/srp_daemon
 /usr/bin/srp_daemon.sh
 /usr/bin/ucmatose
@@ -227,6 +235,10 @@ popd
 %doc /usr/share/man/man5/*
 %doc /usr/share/man/man7/*
 %doc /usr/share/man/man8/*
+
+%files extras
+%defattr(-,root,root,-)
+/usr/bin/rxe_cfg
 
 %files lib
 %defattr(-,root,root,-)
