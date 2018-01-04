@@ -59,7 +59,7 @@ libibumad.so.3:umad_status
 libibumad.so.3:umad_unregister
 libibverbs.so.1:IBVERBS_1.0
 libibverbs.so.1:IBVERBS_1.1
-libibverbs.so.1:IBVERBS_PRIVATE_15
+libibverbs.so.1:IBVERBS_PRIVATE_16
 libibverbs.so.1:ibv_ack_async_event
 libibverbs.so.1:ibv_ack_cq_events
 libibverbs.so.1:ibv_alloc_pd
@@ -92,6 +92,7 @@ libibverbs.so.1:ibv_cmd_destroy_srq
 libibverbs.so.1:ibv_cmd_destroy_wq
 libibverbs.so.1:ibv_cmd_detach_mcast
 libibverbs.so.1:ibv_cmd_get_context
+libibverbs.so.1:ibv_cmd_modify_cq
 libibverbs.so.1:ibv_cmd_modify_qp
 libibverbs.so.1:ibv_cmd_modify_qp_ex
 libibverbs.so.1:ibv_cmd_modify_srq
@@ -165,7 +166,7 @@ libibverbs.so.1:ibv_wc_status_str
 libibverbs.so.1:mbps_to_ibv_rate
 libibverbs.so.1:mult_to_ibv_rate
 libibverbs.so.1:verbs_init_cq
-libibverbs.so.1:verbs_register_driver_15
+libibverbs.so.1:verbs_register_driver_16
 libmlx4.so.1:MLX4_1.0
 libmlx4.so.1:mlx4dv_create_qp
 libmlx4.so.1:mlx4dv_init_obj
@@ -174,11 +175,15 @@ libmlx4.so.1:mlx4dv_set_context_attr
 libmlx5.so.1:MLX5_1.0
 libmlx5.so.1:MLX5_1.1
 libmlx5.so.1:MLX5_1.2
+libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:mlx5dv_create_cq
+libmlx5.so.1:mlx5dv_create_qp
+libmlx5.so.1:mlx5dv_create_wq
 libmlx5.so.1:mlx5dv_init_obj
 libmlx5.so.1:mlx5dv_query_device
 libmlx5.so.1:mlx5dv_set_context_attr
 librdmacm.so.1:RDMACM_1.0
+librdmacm.so.1:RDMACM_1.1
 librdmacm.so.1:raccept
 librdmacm.so.1:rbind
 librdmacm.so.1:rclose
@@ -210,6 +215,7 @@ librdmacm.so.1:rdma_get_request
 librdmacm.so.1:rdma_get_src_port
 librdmacm.so.1:rdma_getaddrinfo
 librdmacm.so.1:rdma_join_multicast
+librdmacm.so.1:rdma_join_multicast_ex
 librdmacm.so.1:rdma_leave_multicast
 librdmacm.so.1:rdma_listen
 librdmacm.so.1:rdma_migrate_id
