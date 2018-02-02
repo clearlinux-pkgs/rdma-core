@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 16.2
-Release  : 6
+Release  : 7
 URL      : https://github.com/linux-rdma/rdma-core/releases/download/v16.2/rdma-core-16.2.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/releases/download/v16.2/rdma-core-16.2.tar.gz
 Summary  : RDMA core userspace libraries and daemons
