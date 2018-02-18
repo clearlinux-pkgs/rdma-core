@@ -1,20 +1,38 @@
-rdma-core (16.2-1) unstable; urgency=low
+rdma-core (17.0-1) unstable; urgency=medium
 
   * New upstream release.
 
- -- Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>  Thu, 01 Feb 2018 09:38:44 +0100
+ -- Jason Gunthorpe <jgg@obsidianresearch.com>  Thu, 15 Feb 2018 12:06:48 +0100
 
-rdma-core (16.1-1) unstable; urgency=low
+rdma-core (16.2-1) unstable; urgency=medium
+
+  * New upstream bugfix release
+  * Guard udevadm call again
+  * Override intentional systemd WantedBy= relationship lintian warning
+
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Thu, 15 Feb 2018 11:41:14 +0100
+
+rdma-core (16.1-2) unstable; urgency=medium
+
+  * Do not require valgrind on ia64 (Closes: #887511)
+
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Fri, 19 Jan 2018 12:37:05 +0100
+
+rdma-core (16.1-1) unstable; urgency=medium
+
+  * New upstream bugfix release.
+  * Bump Standards-Version to 4.1.3 (no changes needed)
+  * Add udev dependency to rdma-core and srptools
+
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Thu, 04 Jan 2018 14:42:26 +0100
+
+rdma-core (16.0-1) unstable; urgency=medium
 
   * New upstream release.
+  * Update private libibverbs symbols
+  * Bump Standards-Version to 4.1.2 (no changes needed)
 
- -- Nicolas Morey-Chaisemartin <NMoreyChaisemartin@suse.com>  Thu, 04 Jan 2018 09:33:06 +0100
-
-rdma-core (16.0-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Jason Gunthorpe <jgg@obsidianresearch.com>  Tue, 14 Nov 2017 12:24:09 +0100
+ -- Benjamin Drung <benjamin.drung@profitbricks.com>  Tue, 12 Dec 2017 11:01:38 +0100
 
 rdma-core (15.1-1) unstable; urgency=medium
 
