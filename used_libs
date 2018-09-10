@@ -4,3 +4,5 @@ libdl.so.2
 libnl-3.so.200
 libnl-route-3.so.200
 libpthread.so.0
+libsystemd.so.0
+libudev.so.1
