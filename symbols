@@ -177,6 +177,7 @@ libmlx5.so.1:MLX5_1.5
 libmlx5.so.1:MLX5_1.6
 libmlx5.so.1:MLX5_1.7
 libmlx5.so.1:MLX5_1.8
+libmlx5.so.1:MLX5_1.9
 libmlx5.so.1:mlx5dv_create_cq
 libmlx5.so.1:mlx5dv_create_flow
 libmlx5.so.1:mlx5dv_create_flow_action_esp
@@ -189,14 +190,18 @@ libmlx5.so.1:mlx5dv_destroy_flow_matcher
 libmlx5.so.1:mlx5dv_devx_alloc_uar
 libmlx5.so.1:mlx5dv_devx_cq_modify
 libmlx5.so.1:mlx5dv_devx_cq_query
+libmlx5.so.1:mlx5dv_devx_create_cmd_comp
+libmlx5.so.1:mlx5dv_devx_destroy_cmd_comp
 libmlx5.so.1:mlx5dv_devx_free_uar
 libmlx5.so.1:mlx5dv_devx_general_cmd
+libmlx5.so.1:mlx5dv_devx_get_async_cmd_comp
 libmlx5.so.1:mlx5dv_devx_ind_tbl_modify
 libmlx5.so.1:mlx5dv_devx_ind_tbl_query
 libmlx5.so.1:mlx5dv_devx_obj_create
 libmlx5.so.1:mlx5dv_devx_obj_destroy
 libmlx5.so.1:mlx5dv_devx_obj_modify
 libmlx5.so.1:mlx5dv_devx_obj_query
+libmlx5.so.1:mlx5dv_devx_obj_query_async
 libmlx5.so.1:mlx5dv_devx_qp_modify
 libmlx5.so.1:mlx5dv_devx_qp_query
 libmlx5.so.1:mlx5dv_devx_query_eqn
@@ -214,6 +219,7 @@ libmlx5.so.1:mlx5dv_query_device
 libmlx5.so.1:mlx5dv_set_context_attr
 librdmacm.so.1:RDMACM_1.0
 librdmacm.so.1:RDMACM_1.1
+librdmacm.so.1:RDMACM_1.2
 librdmacm.so.1:raccept
 librdmacm.so.1:rbind
 librdmacm.so.1:rclose
@@ -235,6 +241,7 @@ librdmacm.so.1:rdma_destroy_id
 librdmacm.so.1:rdma_destroy_qp
 librdmacm.so.1:rdma_destroy_srq
 librdmacm.so.1:rdma_disconnect
+librdmacm.so.1:rdma_establish
 librdmacm.so.1:rdma_event_str
 librdmacm.so.1:rdma_free_devices
 librdmacm.so.1:rdma_freeaddrinfo
@@ -244,6 +251,7 @@ librdmacm.so.1:rdma_get_dst_port
 librdmacm.so.1:rdma_get_request
 librdmacm.so.1:rdma_get_src_port
 librdmacm.so.1:rdma_getaddrinfo
+librdmacm.so.1:rdma_init_qp_attr
 librdmacm.so.1:rdma_join_multicast
 librdmacm.so.1:rdma_join_multicast_ex
 librdmacm.so.1:rdma_leave_multicast
