@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 23
-Release  : 17
+Release  : 18
 URL      : https://github.com/linux-rdma/rdma-core/releases/download/v23/rdma-core-23.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/releases/download/v23/rdma-core-23.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -17,8 +17,6 @@ Requires: rdma-core-lib = %{version}-%{release}
 Requires: rdma-core-libexec = %{version}-%{release}
 Requires: rdma-core-license = %{version}-%{release}
 Requires: rdma-core-man = %{version}-%{release}
-Requires: rdma-core-python = %{version}-%{release}
-Requires: rdma-core-python3 = %{version}-%{release}
 Requires: rdma-core-services = %{version}-%{release}
 BuildRequires : Cython
 BuildRequires : buildreq-cmake
@@ -132,24 +130,6 @@ Group: Default
 man components for the rdma-core package.
 
 
-%package python
-Summary: python components for the rdma-core package.
-Group: Default
-Requires: rdma-core-python3 = %{version}-%{release}
-
-%description python
-python components for the rdma-core package.
-
-
-%package python3
-Summary: python3 components for the rdma-core package.
-Group: Default
-Requires: python3-core
-
-%description python3
-python3 components for the rdma-core package.
-
-
 %package services
 Summary: services components for the rdma-core package.
 Group: Systemd services
@@ -166,16 +146,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552950134
+export SOURCE_DATE_EPOCH=1555254416
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake .. -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552950134
+export SOURCE_DATE_EPOCH=1555254416
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/COPYING.BSD_FB
@@ -187,6 +166,9 @@ cp providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-cor
 pushd clr-build
 %make_install
 popd
+## install_append content
+rm -rf %{buildroot}/usr/lib/python3.7
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -622,13 +604,6 @@ popd
 /usr/share/man/man8/iwpmd.8
 /usr/share/man/man8/rdma-ndd.8
 /usr/share/man/man8/rxe_cfg.8
-
-%files python
-%defattr(-,root,root,-)
-
-%files python3
-%defattr(-,root,root,-)
-/usr/lib/python3*/*
 
 %files services
 %defattr(-,root,root,-)
