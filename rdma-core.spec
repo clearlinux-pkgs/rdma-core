@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 23
-Release  : 18
+Release  : 19
 URL      : https://github.com/linux-rdma/rdma-core/releases/download/v23/rdma-core-23.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/releases/download/v23/rdma-core-23.tar.gz
 Summary  : RDMA core userspace libraries and daemons
