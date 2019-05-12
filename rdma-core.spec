@@ -4,12 +4,12 @@
 #
 Name     : rdma-core
 Version  : 23.1
-Release  : 20
+Release  : 21
 URL      : https://github.com/linux-rdma/rdma-core/releases/download/v23.1/rdma-core-23.1.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/releases/download/v23.1/rdma-core-23.1.tar.gz
 Summary  : RDMA core userspace libraries and daemons
 Group    : Development/Tools
-License  : BSD-2-Clause CC0-1.0 GPL-2.0 GPL-2.0-only MIT OR
+License  : BSD-2-Clause CC0-1.0 GPL-2.0 GPL-2.0-only MIT
 Requires: rdma-core-bin = %{version}-%{release}
 Requires: rdma-core-config = %{version}-%{release}
 Requires: rdma-core-data = %{version}-%{release}
@@ -148,7 +148,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557668275
+export SOURCE_DATE_EPOCH=1557668520
 mkdir -p clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -fno-lto "
@@ -160,7 +160,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557668275
+export SOURCE_DATE_EPOCH=1557668520
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/COPYING.BSD_FB
