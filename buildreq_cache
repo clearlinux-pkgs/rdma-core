@@ -1,5 +1,6 @@
-24.0
+25.0
 Cython
+docutils
 pandoc
 python3-dev
 systemd-dev
