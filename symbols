@@ -1,5 +1,9 @@
 libefa.so.1:EFA_1.0
+libefa.so.1:EFA_1.1
 libefa.so.1:efadv_create_driver_qp
+libefa.so.1:efadv_create_qp_ex
+libefa.so.1:efadv_query_ah
+libefa.so.1:efadv_query_device
 libibmad.so.5:IBMAD_1.3
 libibmad.so.5:bm_call_via
 libibmad.so.5:cc_config_status_via
@@ -172,6 +176,7 @@ libibnetdisc.so.5:ibnd_iter_nodes_type
 libibnetdisc.so.5:ibnd_iter_ports
 libibnetdisc.so.5:ibnd_load_fabric
 libibumad.so.3:IBUMAD_1.0
+libibumad.so.3:IBUMAD_1.1
 libibumad.so.3:umad_addr_dump
 libibumad.so.3:umad_attribute_str
 libibumad.so.3:umad_class_str
@@ -180,7 +185,9 @@ libibumad.so.3:umad_common_mad_status_str
 libibumad.so.3:umad_debug
 libibumad.so.3:umad_done
 libibumad.so.3:umad_dump
+libibumad.so.3:umad_free_ca_device_list
 libibumad.so.3:umad_get_ca
+libibumad.so.3:umad_get_ca_device_list
 libibumad.so.3:umad_get_ca_portguids
 libibumad.so.3:umad_get_cas_names
 libibumad.so.3:umad_get_fd
