@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 26.0
-Release  : 25
+Release  : 26
 URL      : https://github.com/linux-rdma/rdma-core/archive/v26.0/rdma-core-26.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v26.0/rdma-core-26.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -26,7 +26,6 @@ BuildRequires : pandoc
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(libnl-3.0)
 BuildRequires : pkgconfig(libnl-route-3.0)
-BuildRequires : python
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : systemd-dev
@@ -148,7 +147,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570062542
+export SOURCE_DATE_EPOCH=1570655101
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -161,7 +160,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570062542
+export SOURCE_DATE_EPOCH=1570655101
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/COPYING.BSD_FB
