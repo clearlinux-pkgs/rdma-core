@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 26.0
-Release  : 26
+Release  : 27
 URL      : https://github.com/linux-rdma/rdma-core/archive/v26.0/rdma-core-26.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v26.0/rdma-core-26.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -141,13 +141,14 @@ services components for the rdma-core package.
 
 %prep
 %setup -q -n rdma-core-26.0
+cd %{_builddir}/rdma-core-26.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570655101
+export SOURCE_DATE_EPOCH=1576006691
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -160,16 +161,16 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570655101
+export SOURCE_DATE_EPOCH=1576006691
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
-cp COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/COPYING.BSD_FB
-cp COPYING.BSD_MIT %{buildroot}/usr/share/package-licenses/rdma-core/COPYING.BSD_MIT
-cp COPYING.GPL2 %{buildroot}/usr/share/package-licenses/rdma-core/COPYING.GPL2
-cp ccan/LICENSE.CCO %{buildroot}/usr/share/package-licenses/rdma-core/ccan_LICENSE.CCO
-cp ccan/LICENSE.MIT %{buildroot}/usr/share/package-licenses/rdma-core/ccan_LICENSE.MIT
-cp debian/copyright %{buildroot}/usr/share/package-licenses/rdma-core/debian_copyright
-cp providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-core/providers_ipathverbs_COPYING
+cp %{_builddir}/rdma-core-26.0/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
+cp %{_builddir}/rdma-core-26.0/COPYING.BSD_MIT %{buildroot}/usr/share/package-licenses/rdma-core/de66bb2ca6b007504c1844178dce4e48ef2adfff
+cp %{_builddir}/rdma-core-26.0/COPYING.GPL2 %{buildroot}/usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/rdma-core-26.0/ccan/LICENSE.CCO %{buildroot}/usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
+cp %{_builddir}/rdma-core-26.0/ccan/LICENSE.MIT %{buildroot}/usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305
+cp %{_builddir}/rdma-core-26.0/debian/copyright %{buildroot}/usr/share/package-licenses/rdma-core/0958eaeafe07fbee54c3826057ec18175be2ee23
+cp %{_builddir}/rdma-core-26.0/providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
 pushd clr-build
 %make_install
 popd
@@ -183,7 +184,8 @@ rm -f %{buildroot}/usr/share/defaults/rdma-core/modprobe.d/truescale.conf
 rm -f %{buildroot}/usr/share/defaults/rdma-core/srp_daemon.conf
 rm -f %{buildroot}/usr/share/defaults/rdma-core/udev/rules.d/70-persistent-ipoib.rules
 ## install_append content
-rm -rf %{buildroot}/usr/lib/python3.7
+pyver=$(pkg-config python3 --modversion)
+rm -rf %{buildroot}/usr/lib/python${pyver}
 ## install_append end
 
 %files
@@ -681,13 +683,13 @@ rm -rf %{buildroot}/usr/lib/python3.7
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/rdma-core/COPYING.BSD_FB
-/usr/share/package-licenses/rdma-core/COPYING.BSD_MIT
-/usr/share/package-licenses/rdma-core/COPYING.GPL2
-/usr/share/package-licenses/rdma-core/ccan_LICENSE.CCO
-/usr/share/package-licenses/rdma-core/ccan_LICENSE.MIT
-/usr/share/package-licenses/rdma-core/debian_copyright
-/usr/share/package-licenses/rdma-core/providers_ipathverbs_COPYING
+/usr/share/package-licenses/rdma-core/0958eaeafe07fbee54c3826057ec18175be2ee23
+/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
+/usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305
+/usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/rdma-core/de66bb2ca6b007504c1844178dce4e48ef2adfff
+/usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
+/usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
 
 %files man
 %defattr(0644,root,root,0755)

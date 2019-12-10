@@ -1,1 +1,2 @@
-rm -rf %{buildroot}/usr/lib/python3.7
+pyver=$(pkg-config python3 --modversion)
+rm -rf %{buildroot}/usr/lib/python${pyver}
