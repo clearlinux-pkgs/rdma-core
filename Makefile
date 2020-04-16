@@ -1,5 +1,5 @@
 PKG_NAME := rdma-core
-URL = https://github.com/linux-rdma/rdma-core/archive/v27.0/rdma-core-27.0.tar.gz
+URL = https://github.com/linux-rdma/rdma-core/archive/v29.0/rdma-core-29.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

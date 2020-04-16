@@ -220,6 +220,7 @@ libibverbs.so.1:IBVERBS_1.1
 libibverbs.so.1:IBVERBS_1.5
 libibverbs.so.1:IBVERBS_1.6
 libibverbs.so.1:IBVERBS_1.7
+libibverbs.so.1:IBVERBS_1.8
 libibverbs.so.1:IBVERBS_PRIVATE_25
 libibverbs.so.1:__ioctl_final_num_attrs
 libibverbs.so.1:_verbs_init_and_alloc_context
@@ -337,6 +338,7 @@ libibverbs.so.1:ibv_read_ibdev_sysfs_file
 libibverbs.so.1:ibv_read_sysfs_file
 libibverbs.so.1:ibv_reg_mr
 libibverbs.so.1:ibv_reg_mr_iova
+libibverbs.so.1:ibv_reg_mr_iova2
 libibverbs.so.1:ibv_register_driver
 libibverbs.so.1:ibv_rereg_mr
 libibverbs.so.1:ibv_resize_cq
@@ -358,6 +360,8 @@ libmlx5.so.1:MLX5_1.0
 libmlx5.so.1:MLX5_1.1
 libmlx5.so.1:MLX5_1.10
 libmlx5.so.1:MLX5_1.11
+libmlx5.so.1:MLX5_1.12
+libmlx5.so.1:MLX5_1.13
 libmlx5.so.1:MLX5_1.2
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
@@ -367,6 +371,7 @@ libmlx5.so.1:MLX5_1.7
 libmlx5.so.1:MLX5_1.8
 libmlx5.so.1:MLX5_1.9
 libmlx5.so.1:mlx5dv_alloc_dm
+libmlx5.so.1:mlx5dv_alloc_var
 libmlx5.so.1:mlx5dv_create_cq
 libmlx5.so.1:mlx5dv_create_flow
 libmlx5.so.1:mlx5dv_create_flow_action_esp
@@ -412,10 +417,12 @@ libmlx5.so.1:mlx5dv_dr_action_create_dest_table
 libmlx5.so.1:mlx5dv_dr_action_create_dest_vport
 libmlx5.so.1:mlx5dv_dr_action_create_drop
 libmlx5.so.1:mlx5dv_dr_action_create_flow_counter
+libmlx5.so.1:mlx5dv_dr_action_create_flow_meter
 libmlx5.so.1:mlx5dv_dr_action_create_modify_header
 libmlx5.so.1:mlx5dv_dr_action_create_packet_reformat
 libmlx5.so.1:mlx5dv_dr_action_create_tag
 libmlx5.so.1:mlx5dv_dr_action_destroy
+libmlx5.so.1:mlx5dv_dr_action_modify_flow_meter
 libmlx5.so.1:mlx5dv_dr_domain_create
 libmlx5.so.1:mlx5dv_dr_domain_destroy
 libmlx5.so.1:mlx5dv_dr_domain_sync
@@ -425,10 +432,17 @@ libmlx5.so.1:mlx5dv_dr_rule_create
 libmlx5.so.1:mlx5dv_dr_rule_destroy
 libmlx5.so.1:mlx5dv_dr_table_create
 libmlx5.so.1:mlx5dv_dr_table_destroy
+libmlx5.so.1:mlx5dv_dump_dr_domain
+libmlx5.so.1:mlx5dv_dump_dr_matcher
+libmlx5.so.1:mlx5dv_dump_dr_rule
+libmlx5.so.1:mlx5dv_dump_dr_table
+libmlx5.so.1:mlx5dv_free_var
 libmlx5.so.1:mlx5dv_get_clock_info
 libmlx5.so.1:mlx5dv_init_obj
 libmlx5.so.1:mlx5dv_is_supported
 libmlx5.so.1:mlx5dv_open_device
+libmlx5.so.1:mlx5dv_pp_alloc
+libmlx5.so.1:mlx5dv_pp_free
 libmlx5.so.1:mlx5dv_qp_ex_from_ibv_qp_ex
 libmlx5.so.1:mlx5dv_query_device
 libmlx5.so.1:mlx5dv_set_context_attr
