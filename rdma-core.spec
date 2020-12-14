@@ -4,7 +4,7 @@
 #
 Name     : rdma-core
 Version  : 29.0
-Release  : 31
+Release  : 32
 URL      : https://github.com/linux-rdma/rdma-core/archive/v29.0/rdma-core-29.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v29.0/rdma-core-29.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
