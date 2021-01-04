@@ -226,7 +226,7 @@ libibverbs.so.1:IBVERBS_1.6
 libibverbs.so.1:IBVERBS_1.7
 libibverbs.so.1:IBVERBS_1.8
 libibverbs.so.1:IBVERBS_1.9
-libibverbs.so.1:IBVERBS_PRIVATE_25
+libibverbs.so.1:IBVERBS_PRIVATE_33
 libibverbs.so.1:__ioctl_final_num_attrs
 libibverbs.so.1:_ibv_query_gid_ex
 libibverbs.so.1:_ibv_query_gid_table
@@ -284,8 +284,7 @@ libibverbs.so.1:ibv_cmd_post_recv
 libibverbs.so.1:ibv_cmd_post_send
 libibverbs.so.1:ibv_cmd_post_srq_recv
 libibverbs.so.1:ibv_cmd_query_context
-libibverbs.so.1:ibv_cmd_query_device
-libibverbs.so.1:ibv_cmd_query_device_ex
+libibverbs.so.1:ibv_cmd_query_device_any
 libibverbs.so.1:ibv_cmd_query_mr
 libibverbs.so.1:ibv_cmd_query_port
 libibverbs.so.1:ibv_cmd_query_qp
@@ -325,7 +324,6 @@ libibverbs.so.1:ibv_get_device_guid
 libibverbs.so.1:ibv_get_device_index
 libibverbs.so.1:ibv_get_device_list
 libibverbs.so.1:ibv_get_device_name
-libibverbs.so.1:ibv_get_fw_ver
 libibverbs.so.1:ibv_get_pkey_index
 libibverbs.so.1:ibv_get_sysfs_path
 libibverbs.so.1:ibv_import_device
@@ -365,7 +363,7 @@ libibverbs.so.1:mbps_to_ibv_rate
 libibverbs.so.1:mult_to_ibv_rate
 libibverbs.so.1:verbs_init_cq
 libibverbs.so.1:verbs_open_device
-libibverbs.so.1:verbs_register_driver_25
+libibverbs.so.1:verbs_register_driver_33
 libibverbs.so.1:verbs_set_ops
 libibverbs.so.1:verbs_uninit_context
 libmlx4.so.1:MLX4_1.0
@@ -382,6 +380,7 @@ libmlx5.so.1:MLX5_1.13
 libmlx5.so.1:MLX5_1.14
 libmlx5.so.1:MLX5_1.15
 libmlx5.so.1:MLX5_1.16
+libmlx5.so.1:MLX5_1.17
 libmlx5.so.1:MLX5_1.2
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
@@ -432,6 +431,7 @@ libmlx5.so.1:mlx5dv_devx_umem_dereg
 libmlx5.so.1:mlx5dv_devx_umem_reg
 libmlx5.so.1:mlx5dv_devx_wq_modify
 libmlx5.so.1:mlx5dv_devx_wq_query
+libmlx5.so.1:mlx5dv_dr_action_create_aso
 libmlx5.so.1:mlx5dv_dr_action_create_default_miss
 libmlx5.so.1:mlx5dv_dr_action_create_dest_array
 libmlx5.so.1:mlx5dv_dr_action_create_dest_devx_tir
@@ -444,8 +444,11 @@ libmlx5.so.1:mlx5dv_dr_action_create_flow_meter
 libmlx5.so.1:mlx5dv_dr_action_create_flow_sampler
 libmlx5.so.1:mlx5dv_dr_action_create_modify_header
 libmlx5.so.1:mlx5dv_dr_action_create_packet_reformat
+libmlx5.so.1:mlx5dv_dr_action_create_pop_vlan
+libmlx5.so.1:mlx5dv_dr_action_create_push_vlan
 libmlx5.so.1:mlx5dv_dr_action_create_tag
 libmlx5.so.1:mlx5dv_dr_action_destroy
+libmlx5.so.1:mlx5dv_dr_action_modify_aso
 libmlx5.so.1:mlx5dv_dr_action_modify_flow_meter
 libmlx5.so.1:mlx5dv_dr_domain_create
 libmlx5.so.1:mlx5dv_dr_domain_destroy
@@ -466,12 +469,20 @@ libmlx5.so.1:mlx5dv_get_clock_info
 libmlx5.so.1:mlx5dv_init_obj
 libmlx5.so.1:mlx5dv_is_supported
 libmlx5.so.1:mlx5dv_modify_qp_lag_port
+libmlx5.so.1:mlx5dv_modify_qp_sched_elem
+libmlx5.so.1:mlx5dv_modify_qp_udp_sport
 libmlx5.so.1:mlx5dv_open_device
 libmlx5.so.1:mlx5dv_pp_alloc
 libmlx5.so.1:mlx5dv_pp_free
 libmlx5.so.1:mlx5dv_qp_ex_from_ibv_qp_ex
 libmlx5.so.1:mlx5dv_query_device
 libmlx5.so.1:mlx5dv_query_qp_lag_port
+libmlx5.so.1:mlx5dv_sched_leaf_create
+libmlx5.so.1:mlx5dv_sched_leaf_destroy
+libmlx5.so.1:mlx5dv_sched_leaf_modify
+libmlx5.so.1:mlx5dv_sched_node_create
+libmlx5.so.1:mlx5dv_sched_node_destroy
+libmlx5.so.1:mlx5dv_sched_node_modify
 libmlx5.so.1:mlx5dv_set_context_attr
 librdmacm.so.1:RDMACM_1.0
 librdmacm.so.1:RDMACM_1.1
