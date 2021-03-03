@@ -221,12 +221,13 @@ libibverbs.so.1:IBVERBS_1.0
 libibverbs.so.1:IBVERBS_1.1
 libibverbs.so.1:IBVERBS_1.10
 libibverbs.so.1:IBVERBS_1.11
+libibverbs.so.1:IBVERBS_1.12
 libibverbs.so.1:IBVERBS_1.5
 libibverbs.so.1:IBVERBS_1.6
 libibverbs.so.1:IBVERBS_1.7
 libibverbs.so.1:IBVERBS_1.8
 libibverbs.so.1:IBVERBS_1.9
-libibverbs.so.1:IBVERBS_PRIVATE_33
+libibverbs.so.1:IBVERBS_PRIVATE_34
 libibverbs.so.1:__ioctl_final_num_attrs
 libibverbs.so.1:_ibv_query_gid_ex
 libibverbs.so.1:_ibv_query_gid_table
@@ -291,6 +292,7 @@ libibverbs.so.1:ibv_cmd_query_qp
 libibverbs.so.1:ibv_cmd_query_srq
 libibverbs.so.1:ibv_cmd_read_counters
 libibverbs.so.1:ibv_cmd_reg_dm_mr
+libibverbs.so.1:ibv_cmd_reg_dmabuf_mr
 libibverbs.so.1:ibv_cmd_reg_mr
 libibverbs.so.1:ibv_cmd_req_notify_cq
 libibverbs.so.1:ibv_cmd_rereg_mr
@@ -348,6 +350,7 @@ libibverbs.so.1:ibv_rate_to_mbps
 libibverbs.so.1:ibv_rate_to_mult
 libibverbs.so.1:ibv_read_ibdev_sysfs_file
 libibverbs.so.1:ibv_read_sysfs_file
+libibverbs.so.1:ibv_reg_dmabuf_mr
 libibverbs.so.1:ibv_reg_mr
 libibverbs.so.1:ibv_reg_mr_iova
 libibverbs.so.1:ibv_reg_mr_iova2
@@ -363,7 +366,7 @@ libibverbs.so.1:mbps_to_ibv_rate
 libibverbs.so.1:mult_to_ibv_rate
 libibverbs.so.1:verbs_init_cq
 libibverbs.so.1:verbs_open_device
-libibverbs.so.1:verbs_register_driver_33
+libibverbs.so.1:verbs_register_driver_34
 libibverbs.so.1:verbs_set_ops
 libibverbs.so.1:verbs_uninit_context
 libmlx4.so.1:MLX4_1.0
@@ -381,6 +384,7 @@ libmlx5.so.1:MLX5_1.14
 libmlx5.so.1:MLX5_1.15
 libmlx5.so.1:MLX5_1.16
 libmlx5.so.1:MLX5_1.17
+libmlx5.so.1:MLX5_1.18
 libmlx5.so.1:MLX5_1.2
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
@@ -477,6 +481,8 @@ libmlx5.so.1:mlx5dv_pp_free
 libmlx5.so.1:mlx5dv_qp_ex_from_ibv_qp_ex
 libmlx5.so.1:mlx5dv_query_device
 libmlx5.so.1:mlx5dv_query_qp_lag_port
+libmlx5.so.1:mlx5dv_reserved_qpn_alloc
+libmlx5.so.1:mlx5dv_reserved_qpn_dealloc
 libmlx5.so.1:mlx5dv_sched_leaf_create
 libmlx5.so.1:mlx5dv_sched_leaf_destroy
 libmlx5.so.1:mlx5dv_sched_leaf_modify
