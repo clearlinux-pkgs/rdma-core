@@ -222,6 +222,7 @@ libibverbs.so.1:IBVERBS_1.1
 libibverbs.so.1:IBVERBS_1.10
 libibverbs.so.1:IBVERBS_1.11
 libibverbs.so.1:IBVERBS_1.12
+libibverbs.so.1:IBVERBS_1.13
 libibverbs.so.1:IBVERBS_1.5
 libibverbs.so.1:IBVERBS_1.6
 libibverbs.so.1:IBVERBS_1.7
@@ -329,9 +330,11 @@ libibverbs.so.1:ibv_get_device_name
 libibverbs.so.1:ibv_get_pkey_index
 libibverbs.so.1:ibv_get_sysfs_path
 libibverbs.so.1:ibv_import_device
+libibverbs.so.1:ibv_import_dm
 libibverbs.so.1:ibv_import_mr
 libibverbs.so.1:ibv_import_pd
 libibverbs.so.1:ibv_init_ah_from_wc
+libibverbs.so.1:ibv_is_fork_initialized
 libibverbs.so.1:ibv_modify_qp
 libibverbs.so.1:ibv_modify_srq
 libibverbs.so.1:ibv_node_type_str
@@ -359,6 +362,7 @@ libibverbs.so.1:ibv_rereg_mr
 libibverbs.so.1:ibv_resize_cq
 libibverbs.so.1:ibv_resolve_eth_l2_from_gid
 libibverbs.so.1:ibv_set_ece
+libibverbs.so.1:ibv_unimport_dm
 libibverbs.so.1:ibv_unimport_mr
 libibverbs.so.1:ibv_unimport_pd
 libibverbs.so.1:ibv_wc_status_str
@@ -385,6 +389,7 @@ libmlx5.so.1:MLX5_1.15
 libmlx5.so.1:MLX5_1.16
 libmlx5.so.1:MLX5_1.17
 libmlx5.so.1:MLX5_1.18
+libmlx5.so.1:MLX5_1.19
 libmlx5.so.1:MLX5_1.2
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
@@ -393,6 +398,7 @@ libmlx5.so.1:MLX5_1.6
 libmlx5.so.1:MLX5_1.7
 libmlx5.so.1:MLX5_1.8
 libmlx5.so.1:MLX5_1.9
+libmlx5.so.1:_mlx5dv_query_port
 libmlx5.so.1:mlx5dv_alloc_dm
 libmlx5.so.1:mlx5dv_alloc_var
 libmlx5.so.1:mlx5dv_create_cq
@@ -433,8 +439,10 @@ libmlx5.so.1:mlx5dv_devx_subscribe_devx_event
 libmlx5.so.1:mlx5dv_devx_subscribe_devx_event_fd
 libmlx5.so.1:mlx5dv_devx_umem_dereg
 libmlx5.so.1:mlx5dv_devx_umem_reg
+libmlx5.so.1:mlx5dv_devx_umem_reg_ex
 libmlx5.so.1:mlx5dv_devx_wq_modify
 libmlx5.so.1:mlx5dv_devx_wq_query
+libmlx5.so.1:mlx5dv_dm_map_op_addr
 libmlx5.so.1:mlx5dv_dr_action_create_aso
 libmlx5.so.1:mlx5dv_dr_action_create_default_miss
 libmlx5.so.1:mlx5dv_dr_action_create_dest_array
