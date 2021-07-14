@@ -223,6 +223,7 @@ libibverbs.so.1:IBVERBS_1.10
 libibverbs.so.1:IBVERBS_1.11
 libibverbs.so.1:IBVERBS_1.12
 libibverbs.so.1:IBVERBS_1.13
+libibverbs.so.1:IBVERBS_1.14
 libibverbs.so.1:IBVERBS_1.5
 libibverbs.so.1:IBVERBS_1.6
 libibverbs.so.1:IBVERBS_1.7
@@ -348,6 +349,7 @@ libibverbs.so.1:ibv_query_gid_type
 libibverbs.so.1:ibv_query_pkey
 libibverbs.so.1:ibv_query_port
 libibverbs.so.1:ibv_query_qp
+libibverbs.so.1:ibv_query_qp_data_in_order
 libibverbs.so.1:ibv_query_srq
 libibverbs.so.1:ibv_rate_to_mbps
 libibverbs.so.1:ibv_rate_to_mult
@@ -391,6 +393,7 @@ libmlx5.so.1:MLX5_1.17
 libmlx5.so.1:MLX5_1.18
 libmlx5.so.1:MLX5_1.19
 libmlx5.so.1:MLX5_1.2
+libmlx5.so.1:MLX5_1.20
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
 libmlx5.so.1:MLX5_1.5
@@ -398,6 +401,7 @@ libmlx5.so.1:MLX5_1.6
 libmlx5.so.1:MLX5_1.7
 libmlx5.so.1:MLX5_1.8
 libmlx5.so.1:MLX5_1.9
+libmlx5.so.1:_mlx5dv_mkey_check
 libmlx5.so.1:_mlx5dv_query_port
 libmlx5.so.1:mlx5dv_alloc_dm
 libmlx5.so.1:mlx5dv_alloc_var
@@ -462,6 +466,7 @@ libmlx5.so.1:mlx5dv_dr_action_create_tag
 libmlx5.so.1:mlx5dv_dr_action_destroy
 libmlx5.so.1:mlx5dv_dr_action_modify_aso
 libmlx5.so.1:mlx5dv_dr_action_modify_flow_meter
+libmlx5.so.1:mlx5dv_dr_domain_allow_duplicate_rules
 libmlx5.so.1:mlx5dv_dr_domain_create
 libmlx5.so.1:mlx5dv_dr_domain_destroy
 libmlx5.so.1:mlx5dv_dr_domain_set_reclaim_device_memory
@@ -480,12 +485,14 @@ libmlx5.so.1:mlx5dv_free_var
 libmlx5.so.1:mlx5dv_get_clock_info
 libmlx5.so.1:mlx5dv_init_obj
 libmlx5.so.1:mlx5dv_is_supported
+libmlx5.so.1:mlx5dv_map_ah_to_qp
 libmlx5.so.1:mlx5dv_modify_qp_lag_port
 libmlx5.so.1:mlx5dv_modify_qp_sched_elem
 libmlx5.so.1:mlx5dv_modify_qp_udp_sport
 libmlx5.so.1:mlx5dv_open_device
 libmlx5.so.1:mlx5dv_pp_alloc
 libmlx5.so.1:mlx5dv_pp_free
+libmlx5.so.1:mlx5dv_qp_cancel_posted_send_wrs
 libmlx5.so.1:mlx5dv_qp_ex_from_ibv_qp_ex
 libmlx5.so.1:mlx5dv_query_device
 libmlx5.so.1:mlx5dv_query_qp_lag_port
