@@ -231,6 +231,7 @@ libibverbs.so.1:IBVERBS_1.8
 libibverbs.so.1:IBVERBS_1.9
 libibverbs.so.1:IBVERBS_PRIVATE_34
 libibverbs.so.1:__ioctl_final_num_attrs
+libibverbs.so.1:__verbs_log
 libibverbs.so.1:_ibv_query_gid_ex
 libibverbs.so.1:_ibv_query_gid_table
 libibverbs.so.1:_verbs_init_and_alloc_context
@@ -394,6 +395,7 @@ libmlx5.so.1:MLX5_1.18
 libmlx5.so.1:MLX5_1.19
 libmlx5.so.1:MLX5_1.2
 libmlx5.so.1:MLX5_1.20
+libmlx5.so.1:MLX5_1.21
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
 libmlx5.so.1:MLX5_1.5
@@ -414,6 +416,13 @@ libmlx5.so.1:mlx5dv_create_flow_matcher
 libmlx5.so.1:mlx5dv_create_mkey
 libmlx5.so.1:mlx5dv_create_qp
 libmlx5.so.1:mlx5dv_create_wq
+libmlx5.so.1:mlx5dv_crypto_login
+libmlx5.so.1:mlx5dv_crypto_login_query_state
+libmlx5.so.1:mlx5dv_crypto_logout
+libmlx5.so.1:mlx5dv_dci_stream_id_reset
+libmlx5.so.1:mlx5dv_dek_create
+libmlx5.so.1:mlx5dv_dek_destroy
+libmlx5.so.1:mlx5dv_dek_query
 libmlx5.so.1:mlx5dv_destroy_flow_matcher
 libmlx5.so.1:mlx5dv_destroy_mkey
 libmlx5.so.1:mlx5dv_devx_alloc_uar
@@ -451,6 +460,7 @@ libmlx5.so.1:mlx5dv_dr_action_create_aso
 libmlx5.so.1:mlx5dv_dr_action_create_default_miss
 libmlx5.so.1:mlx5dv_dr_action_create_dest_array
 libmlx5.so.1:mlx5dv_dr_action_create_dest_devx_tir
+libmlx5.so.1:mlx5dv_dr_action_create_dest_ib_port
 libmlx5.so.1:mlx5dv_dr_action_create_dest_ibv_qp
 libmlx5.so.1:mlx5dv_dr_action_create_dest_table
 libmlx5.so.1:mlx5dv_dr_action_create_dest_vport
@@ -473,6 +483,7 @@ libmlx5.so.1:mlx5dv_dr_domain_set_reclaim_device_memory
 libmlx5.so.1:mlx5dv_dr_domain_sync
 libmlx5.so.1:mlx5dv_dr_matcher_create
 libmlx5.so.1:mlx5dv_dr_matcher_destroy
+libmlx5.so.1:mlx5dv_dr_matcher_set_layout
 libmlx5.so.1:mlx5dv_dr_rule_create
 libmlx5.so.1:mlx5dv_dr_rule_destroy
 libmlx5.so.1:mlx5dv_dr_table_create
@@ -483,6 +494,7 @@ libmlx5.so.1:mlx5dv_dump_dr_rule
 libmlx5.so.1:mlx5dv_dump_dr_table
 libmlx5.so.1:mlx5dv_free_var
 libmlx5.so.1:mlx5dv_get_clock_info
+libmlx5.so.1:mlx5dv_get_vfio_device_list
 libmlx5.so.1:mlx5dv_init_obj
 libmlx5.so.1:mlx5dv_is_supported
 libmlx5.so.1:mlx5dv_map_ah_to_qp
@@ -505,6 +517,8 @@ libmlx5.so.1:mlx5dv_sched_node_create
 libmlx5.so.1:mlx5dv_sched_node_destroy
 libmlx5.so.1:mlx5dv_sched_node_modify
 libmlx5.so.1:mlx5dv_set_context_attr
+libmlx5.so.1:mlx5dv_vfio_get_events_fd
+libmlx5.so.1:mlx5dv_vfio_process_events
 librdmacm.so.1:RDMACM_1.0
 librdmacm.so.1:RDMACM_1.1
 librdmacm.so.1:RDMACM_1.2
