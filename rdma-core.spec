@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : rdma-core
 Version  : 39.0
-Release  : 46
+Release  : 47
 URL      : https://github.com/linux-rdma/rdma-core/archive/v39.0/rdma-core-39.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v39.0/rdma-core-39.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -133,6 +133,15 @@ Group: Systemd services
 services components for the rdma-core package.
 
 
+%package staticdev
+Summary: staticdev components for the rdma-core package.
+Group: Default
+Requires: rdma-core-dev = %{version}-%{release}
+
+%description staticdev
+staticdev components for the rdma-core package.
+
+
 %prep
 %setup -q -n rdma-core-39.0
 cd %{_builddir}/rdma-core-39.0
@@ -142,7 +151,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1645491768
+export SOURCE_DATE_EPOCH=1645492202
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -150,12 +159,13 @@ export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
 export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
-%cmake .. -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core
+%cmake .. -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core \
+-DENABLE_STATIC=1
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1645491768
+export SOURCE_DATE_EPOCH=1645492202
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-39.0/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
@@ -842,3 +852,26 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib/systemd/system/rdma-ndd.service
 /usr/lib/systemd/system/srp_daemon.service
 /usr/lib/systemd/system/srp_daemon_port@.service
+
+%files staticdev
+%defattr(-,root,root,-)
+/usr/lib64/libbnxt_re-rdmav34.a
+/usr/lib64/libcxgb4-rdmav34.a
+/usr/lib64/libefa.a
+/usr/lib64/libhfi1verbs-rdmav34.a
+/usr/lib64/libhns-rdmav34.a
+/usr/lib64/libibmad.a
+/usr/lib64/libibnetdisc.a
+/usr/lib64/libibumad.a
+/usr/lib64/libibverbs.a
+/usr/lib64/libipathverbs-rdmav34.a
+/usr/lib64/libirdma-rdmav34.a
+/usr/lib64/libmlx4.a
+/usr/lib64/libmlx5.a
+/usr/lib64/libmthca-rdmav34.a
+/usr/lib64/libocrdma-rdmav34.a
+/usr/lib64/libqedr-rdmav34.a
+/usr/lib64/librdmacm.a
+/usr/lib64/librxe-rdmav34.a
+/usr/lib64/libsiw-rdmav34.a
+/usr/lib64/libvmw_pvrdma-rdmav34.a
