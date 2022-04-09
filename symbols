@@ -397,6 +397,7 @@ libmlx5.so.1:MLX5_1.2
 libmlx5.so.1:MLX5_1.20
 libmlx5.so.1:MLX5_1.21
 libmlx5.so.1:MLX5_1.22
+libmlx5.so.1:MLX5_1.23
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
 libmlx5.so.1:MLX5_1.5
@@ -426,13 +427,17 @@ libmlx5.so.1:mlx5dv_dek_destroy
 libmlx5.so.1:mlx5dv_dek_query
 libmlx5.so.1:mlx5dv_destroy_flow_matcher
 libmlx5.so.1:mlx5dv_destroy_mkey
+libmlx5.so.1:mlx5dv_devx_alloc_msi_vector
 libmlx5.so.1:mlx5dv_devx_alloc_uar
 libmlx5.so.1:mlx5dv_devx_cq_modify
 libmlx5.so.1:mlx5dv_devx_cq_query
 libmlx5.so.1:mlx5dv_devx_create_cmd_comp
+libmlx5.so.1:mlx5dv_devx_create_eq
 libmlx5.so.1:mlx5dv_devx_create_event_channel
 libmlx5.so.1:mlx5dv_devx_destroy_cmd_comp
+libmlx5.so.1:mlx5dv_devx_destroy_eq
 libmlx5.so.1:mlx5dv_devx_destroy_event_channel
+libmlx5.so.1:mlx5dv_devx_free_msi_vector
 libmlx5.so.1:mlx5dv_devx_free_uar
 libmlx5.so.1:mlx5dv_devx_general_cmd
 libmlx5.so.1:mlx5dv_devx_get_async_cmd_comp
