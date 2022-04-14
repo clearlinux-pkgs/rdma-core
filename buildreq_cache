@@ -1,6 +1,6 @@
 40.0
-docutils
 pandoc
 pypi-cython
+pypi-docutils
 python3-dev
 systemd-dev

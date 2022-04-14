@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : rdma-core
 Version  : 40.0
-Release  : 49
+Release  : 50
 URL      : https://github.com/linux-rdma/rdma-core/archive/v40.0/rdma-core-40.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v40.0/rdma-core-40.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -20,7 +20,6 @@ Requires: rdma-core-license = %{version}-%{release}
 Requires: rdma-core-man = %{version}-%{release}
 Requires: rdma-core-services = %{version}-%{release}
 BuildRequires : buildreq-cmake
-BuildRequires : docutils
 BuildRequires : libnl-dev
 BuildRequires : pandoc
 BuildRequires : pkg-config
@@ -28,6 +27,7 @@ BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libnl-3.0)
 BuildRequires : pkgconfig(libnl-route-3.0)
 BuildRequires : pypi-cython
+BuildRequires : pypi-docutils
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : systemd-dev
@@ -151,7 +151,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1649522710
+export SOURCE_DATE_EPOCH=1649971605
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -165,7 +165,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1649522710
+export SOURCE_DATE_EPOCH=1649971605
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-40.0/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
@@ -173,6 +173,7 @@ cp %{_builddir}/rdma-core-40.0/COPYING.BSD_MIT %{buildroot}/usr/share/package-li
 cp %{_builddir}/rdma-core-40.0/COPYING.GPL2 %{buildroot}/usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
 cp %{_builddir}/rdma-core-40.0/ccan/LICENSE.CCO %{buildroot}/usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
 cp %{_builddir}/rdma-core-40.0/ccan/LICENSE.MIT %{buildroot}/usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305
+cp %{_builddir}/rdma-core-40.0/debian/copyright %{buildroot}/usr/share/package-licenses/rdma-core/a13369e232d6e111a1fa1f6d0f99ec9eb1f45894
 cp %{_builddir}/rdma-core-40.0/providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
 pushd clr-build
 %make_install
@@ -768,6 +769,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
 /usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305
 /usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
+/usr/share/package-licenses/rdma-core/a13369e232d6e111a1fa1f6d0f99ec9eb1f45894
 /usr/share/package-licenses/rdma-core/de66bb2ca6b007504c1844178dce4e48ef2adfff
 /usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
 /usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
