@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : rdma-core
-Version  : 41.0
-Release  : 51
-URL      : https://github.com/linux-rdma/rdma-core/archive/v41.0/rdma-core-41.0.tar.gz
-Source0  : https://github.com/linux-rdma/rdma-core/archive/v41.0/rdma-core-41.0.tar.gz
+Version  : 42.0
+Release  : 52
+URL      : https://github.com/linux-rdma/rdma-core/archive/v42.0/rdma-core-42.0.tar.gz
+Source0  : https://github.com/linux-rdma/rdma-core/archive/v42.0/rdma-core-42.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 GPL-2.0-only MIT
@@ -143,15 +143,15 @@ staticdev components for the rdma-core package.
 
 
 %prep
-%setup -q -n rdma-core-41.0
-cd %{_builddir}/rdma-core-41.0
+%setup -q -n rdma-core-42.0
+cd %{_builddir}/rdma-core-42.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654701279
+export SOURCE_DATE_EPOCH=1660848700
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -165,15 +165,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654701279
+export SOURCE_DATE_EPOCH=1660848700
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
-cp %{_builddir}/rdma-core-41.0/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
-cp %{_builddir}/rdma-core-41.0/COPYING.BSD_MIT %{buildroot}/usr/share/package-licenses/rdma-core/de66bb2ca6b007504c1844178dce4e48ef2adfff
-cp %{_builddir}/rdma-core-41.0/COPYING.GPL2 %{buildroot}/usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/rdma-core-41.0/ccan/LICENSE.CCO %{buildroot}/usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
-cp %{_builddir}/rdma-core-41.0/ccan/LICENSE.MIT %{buildroot}/usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305
-cp %{_builddir}/rdma-core-41.0/providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
+cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f
+cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_MIT %{buildroot}/usr/share/package-licenses/rdma-core/de66bb2ca6b007504c1844178dce4e48ef2adfff
+cp %{_builddir}/rdma-core-%{version}/COPYING.GPL2 %{buildroot}/usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/rdma-core-%{version}/ccan/LICENSE.CCO %{buildroot}/usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
+cp %{_builddir}/rdma-core-%{version}/ccan/LICENSE.MIT %{buildroot}/usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305
+cp %{_builddir}/rdma-core-%{version}/debian/copyright %{buildroot}/usr/share/package-licenses/rdma-core/e82559b138e98b1e98fee4016349486870f0149c
+cp %{_builddir}/rdma-core-%{version}/providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
 pushd clr-build
 %make_install
 popd
@@ -497,7 +498,11 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man3/mlx5dv_create_flow_matcher.3
 /usr/share/man/man3/mlx5dv_create_mkey.3
 /usr/share/man/man3/mlx5dv_create_qp.3
+/usr/share/man/man3/mlx5dv_create_steering_anchor.3
 /usr/share/man/man3/mlx5dv_crypto_login.3
+/usr/share/man/man3/mlx5dv_crypto_login_create.3
+/usr/share/man/man3/mlx5dv_crypto_login_destroy.3
+/usr/share/man/man3/mlx5dv_crypto_login_query.3
 /usr/share/man/man3/mlx5dv_crypto_login_query_state.3
 /usr/share/man/man3/mlx5dv_crypto_logout.3
 /usr/share/man/man3/mlx5dv_dci_stream_id_reset.3
@@ -505,6 +510,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man3/mlx5dv_dek_destroy.3
 /usr/share/man/man3/mlx5dv_dek_query.3
 /usr/share/man/man3/mlx5dv_destroy_mkey.3
+/usr/share/man/man3/mlx5dv_destroy_steering_anchor.3
 /usr/share/man/man3/mlx5dv_devx_alloc_msi_vector.3
 /usr/share/man/man3/mlx5dv_devx_alloc_uar.3
 /usr/share/man/man3/mlx5dv_devx_cq_modify.3
@@ -546,6 +552,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man3/mlx5dv_dr_action_create_dest_devx_tir.3
 /usr/share/man/man3/mlx5dv_dr_action_create_dest_ib_port.3
 /usr/share/man/man3/mlx5dv_dr_action_create_dest_ibv_qp.3
+/usr/share/man/man3/mlx5dv_dr_action_create_dest_root_table.3
 /usr/share/man/man3/mlx5dv_dr_action_create_dest_table.3
 /usr/share/man/man3/mlx5dv_dr_action_create_dest_vport.3
 /usr/share/man/man3/mlx5dv_dr_action_create_drop.3
@@ -725,15 +732,15 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 %defattr(-,root,root,-)
 /usr/lib64/ibacm/libibacmp.so
 /usr/lib64/libefa.so.1
-/usr/lib64/libefa.so.1.1.41.0
+/usr/lib64/libefa.so.1.1.42.0
 /usr/lib64/libibmad.so.5
-/usr/lib64/libibmad.so.5.3.41.0
+/usr/lib64/libibmad.so.5.3.42.0
 /usr/lib64/libibnetdisc.so.5
-/usr/lib64/libibnetdisc.so.5.0.41.0
+/usr/lib64/libibnetdisc.so.5.0.42.0
 /usr/lib64/libibumad.so.3
-/usr/lib64/libibumad.so.3.2.41.0
+/usr/lib64/libibumad.so.3.2.42.0
 /usr/lib64/libibverbs.so.1
-/usr/lib64/libibverbs.so.1.14.41.0
+/usr/lib64/libibverbs.so.1.14.42.0
 /usr/lib64/libibverbs/libbnxt_re-rdmav34.so
 /usr/lib64/libibverbs/libcxgb4-rdmav34.so
 /usr/lib64/libibverbs/libefa-rdmav34.so
@@ -750,11 +757,11 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibverbs/libsiw-rdmav34.so
 /usr/lib64/libibverbs/libvmw_pvrdma-rdmav34.so
 /usr/lib64/libmlx4.so.1
-/usr/lib64/libmlx4.so.1.0.41.0
+/usr/lib64/libmlx4.so.1.0.42.0
 /usr/lib64/libmlx5.so.1
-/usr/lib64/libmlx5.so.1.23.41.0
+/usr/lib64/libmlx5.so.1.24.42.0
 /usr/lib64/librdmacm.so.1
-/usr/lib64/librdmacm.so.1.3.41.0
+/usr/lib64/librdmacm.so.1.3.42.0
 /usr/lib64/rsocket/librspreload.so
 /usr/lib64/rsocket/librspreload.so.1
 /usr/lib64/rsocket/librspreload.so.1.0.0
@@ -770,6 +777,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/package-licenses/rdma-core/4cc77b90af91e615a64ae04893fdffa7939db84c
 /usr/share/package-licenses/rdma-core/de66bb2ca6b007504c1844178dce4e48ef2adfff
 /usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09
+/usr/share/package-licenses/rdma-core/e82559b138e98b1e98fee4016349486870f0149c
 /usr/share/package-licenses/rdma-core/eaff686ba07863809da758bed796270f84c877ec
 
 %files man

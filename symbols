@@ -398,6 +398,7 @@ libmlx5.so.1:MLX5_1.20
 libmlx5.so.1:MLX5_1.21
 libmlx5.so.1:MLX5_1.22
 libmlx5.so.1:MLX5_1.23
+libmlx5.so.1:MLX5_1.24
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
 libmlx5.so.1:MLX5_1.5
@@ -417,8 +418,12 @@ libmlx5.so.1:mlx5dv_create_flow_action_packet_reformat
 libmlx5.so.1:mlx5dv_create_flow_matcher
 libmlx5.so.1:mlx5dv_create_mkey
 libmlx5.so.1:mlx5dv_create_qp
+libmlx5.so.1:mlx5dv_create_steering_anchor
 libmlx5.so.1:mlx5dv_create_wq
 libmlx5.so.1:mlx5dv_crypto_login
+libmlx5.so.1:mlx5dv_crypto_login_create
+libmlx5.so.1:mlx5dv_crypto_login_destroy
+libmlx5.so.1:mlx5dv_crypto_login_query
 libmlx5.so.1:mlx5dv_crypto_login_query_state
 libmlx5.so.1:mlx5dv_crypto_logout
 libmlx5.so.1:mlx5dv_dci_stream_id_reset
@@ -427,6 +432,7 @@ libmlx5.so.1:mlx5dv_dek_destroy
 libmlx5.so.1:mlx5dv_dek_query
 libmlx5.so.1:mlx5dv_destroy_flow_matcher
 libmlx5.so.1:mlx5dv_destroy_mkey
+libmlx5.so.1:mlx5dv_destroy_steering_anchor
 libmlx5.so.1:mlx5dv_devx_alloc_msi_vector
 libmlx5.so.1:mlx5dv_devx_alloc_uar
 libmlx5.so.1:mlx5dv_devx_cq_modify
@@ -468,6 +474,7 @@ libmlx5.so.1:mlx5dv_dr_action_create_dest_array
 libmlx5.so.1:mlx5dv_dr_action_create_dest_devx_tir
 libmlx5.so.1:mlx5dv_dr_action_create_dest_ib_port
 libmlx5.so.1:mlx5dv_dr_action_create_dest_ibv_qp
+libmlx5.so.1:mlx5dv_dr_action_create_dest_root_table
 libmlx5.so.1:mlx5dv_dr_action_create_dest_table
 libmlx5.so.1:mlx5dv_dr_action_create_dest_vport
 libmlx5.so.1:mlx5dv_dr_action_create_drop
