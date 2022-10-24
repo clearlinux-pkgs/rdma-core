@@ -1,5 +1,8 @@
 libefa.so.1:EFA_1.0
 libefa.so.1:EFA_1.1
+libefa.so.1:EFA_1.2
+libefa.so.1:efadv_cq_from_ibv_cq_ex
+libefa.so.1:efadv_create_cq
 libefa.so.1:efadv_create_driver_qp
 libefa.so.1:efadv_create_qp_ex
 libefa.so.1:efadv_query_ah
