@@ -379,6 +379,9 @@ libibverbs.so.1:verbs_open_device
 libibverbs.so.1:verbs_register_driver_34
 libibverbs.so.1:verbs_set_ops
 libibverbs.so.1:verbs_uninit_context
+libmana.so.1:MANA_1.0
+libmana.so.1:manadv_init_obj
+libmana.so.1:manadv_set_context_attr
 libmlx4.so.1:MLX4_1.0
 libmlx4.so.1:mlx4dv_create_qp
 libmlx4.so.1:mlx4dv_init_obj

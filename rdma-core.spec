@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : rdma-core
-Version  : 43.0
-Release  : 53
-URL      : https://github.com/linux-rdma/rdma-core/archive/v43.0/rdma-core-43.0.tar.gz
-Source0  : https://github.com/linux-rdma/rdma-core/archive/v43.0/rdma-core-43.0.tar.gz
+Version  : 44.0
+Release  : 54
+URL      : https://github.com/linux-rdma/rdma-core/archive/v44.0/rdma-core-44.0.tar.gz
+Source0  : https://github.com/linux-rdma/rdma-core/archive/v44.0/rdma-core-44.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 GPL-2.0-only MIT
@@ -31,6 +31,9 @@ BuildRequires : pypi-docutils
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : systemd-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 RDMA core userspace infrastructure and documentation, including initialization
@@ -143,29 +146,29 @@ staticdev components for the rdma-core package.
 
 
 %prep
-%setup -q -n rdma-core-43.0
-cd %{_builddir}/rdma-core-43.0
+%setup -q -n rdma-core-44.0
+cd %{_builddir}/rdma-core-44.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1666635018
+export SOURCE_DATE_EPOCH=1672693299
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake .. -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core \
 -DENABLE_STATIC=1
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1666635018
+export SOURCE_DATE_EPOCH=1672693299
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f || :
@@ -281,6 +284,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/defaults/rdma-core/libibverbs.d/hns.driver
 /usr/share/defaults/rdma-core/libibverbs.d/ipathverbs.driver
 /usr/share/defaults/rdma-core/libibverbs.d/irdma.driver
+/usr/share/defaults/rdma-core/libibverbs.d/mana.driver
 /usr/share/defaults/rdma-core/libibverbs.d/mlx4.driver
 /usr/share/defaults/rdma-core/libibverbs.d/mlx5.driver
 /usr/share/defaults/rdma-core/libibverbs.d/mthca.driver
@@ -310,6 +314,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/include/infiniband/ibnetdisc_osd.h
 /usr/include/infiniband/mad.h
 /usr/include/infiniband/mad_osd.h
+/usr/include/infiniband/manadv.h
 /usr/include/infiniband/mlx4dv.h
 /usr/include/infiniband/mlx5_api.h
 /usr/include/infiniband/mlx5_user_ioctl_verbs.h
@@ -336,6 +341,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibnetdisc.so
 /usr/lib64/libibumad.so
 /usr/lib64/libibverbs.so
+/usr/lib64/libmana.so
 /usr/lib64/libmlx4.so
 /usr/lib64/libmlx5.so
 /usr/lib64/librdmacm.so
@@ -344,6 +350,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/pkgconfig/libibnetdisc.pc
 /usr/lib64/pkgconfig/libibumad.pc
 /usr/lib64/pkgconfig/libibverbs.pc
+/usr/lib64/pkgconfig/libmana.pc
 /usr/lib64/pkgconfig/libmlx4.pc
 /usr/lib64/pkgconfig/libmlx5.pc
 /usr/lib64/pkgconfig/librdmacm.pc
@@ -485,6 +492,8 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man3/ibv_wr_set_ud_addr.3
 /usr/share/man/man3/ibv_wr_set_xrc_srqn.3
 /usr/share/man/man3/ibv_wr_start.3
+/usr/share/man/man3/manadv_init_obj.3
+/usr/share/man/man3/manadv_set_context_attr.3
 /usr/share/man/man3/mbps_to_ibv_rate.3
 /usr/share/man/man3/mlx4dv_init_obj.3
 /usr/share/man/man3/mlx4dv_query_device.3
@@ -732,15 +741,15 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 %defattr(-,root,root,-)
 /usr/lib64/ibacm/libibacmp.so
 /usr/lib64/libefa.so.1
-/usr/lib64/libefa.so.1.2.43.0
+/usr/lib64/libefa.so.1.2.44.0
 /usr/lib64/libibmad.so.5
-/usr/lib64/libibmad.so.5.3.43.0
+/usr/lib64/libibmad.so.5.3.44.0
 /usr/lib64/libibnetdisc.so.5
-/usr/lib64/libibnetdisc.so.5.0.43.0
+/usr/lib64/libibnetdisc.so.5.0.44.0
 /usr/lib64/libibumad.so.3
-/usr/lib64/libibumad.so.3.2.43.0
+/usr/lib64/libibumad.so.3.2.44.0
 /usr/lib64/libibverbs.so.1
-/usr/lib64/libibverbs.so.1.14.43.0
+/usr/lib64/libibverbs.so.1.14.44.0
 /usr/lib64/libibverbs/libbnxt_re-rdmav34.so
 /usr/lib64/libibverbs/libcxgb4-rdmav34.so
 /usr/lib64/libibverbs/libefa-rdmav34.so
@@ -749,6 +758,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibverbs/libhns-rdmav34.so
 /usr/lib64/libibverbs/libipathverbs-rdmav34.so
 /usr/lib64/libibverbs/libirdma-rdmav34.so
+/usr/lib64/libibverbs/libmana-rdmav34.so
 /usr/lib64/libibverbs/libmlx4-rdmav34.so
 /usr/lib64/libibverbs/libmlx5-rdmav34.so
 /usr/lib64/libibverbs/libmthca-rdmav34.so
@@ -757,12 +767,14 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibverbs/librxe-rdmav34.so
 /usr/lib64/libibverbs/libsiw-rdmav34.so
 /usr/lib64/libibverbs/libvmw_pvrdma-rdmav34.so
+/usr/lib64/libmana.so.1
+/usr/lib64/libmana.so.1.0.44.0
 /usr/lib64/libmlx4.so.1
-/usr/lib64/libmlx4.so.1.0.43.0
+/usr/lib64/libmlx4.so.1.0.44.0
 /usr/lib64/libmlx5.so.1
-/usr/lib64/libmlx5.so.1.24.43.0
+/usr/lib64/libmlx5.so.1.24.44.0
 /usr/lib64/librdmacm.so.1
-/usr/lib64/librdmacm.so.1.3.43.0
+/usr/lib64/librdmacm.so.1.3.44.0
 /usr/lib64/rsocket/librspreload.so
 /usr/lib64/rsocket/librspreload.so.1
 /usr/lib64/rsocket/librspreload.so.1.0.0
@@ -810,6 +822,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man7/efadv.7
 /usr/share/man/man7/ibacm.7
 /usr/share/man/man7/ibacm_prov.7
+/usr/share/man/man7/manadv.7
 /usr/share/man/man7/mlx4dv.7
 /usr/share/man/man7/mlx5dv.7
 /usr/share/man/man7/rdma_cm.7
@@ -877,6 +890,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibverbs.a
 /usr/lib64/libipathverbs-rdmav34.a
 /usr/lib64/libirdma-rdmav34.a
+/usr/lib64/libmana.a
 /usr/lib64/libmlx4.a
 /usr/lib64/libmlx5.a
 /usr/lib64/libmthca-rdmav34.a
