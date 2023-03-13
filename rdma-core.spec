@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : rdma-core
-Version  : 44.0
-Release  : 54
-URL      : https://github.com/linux-rdma/rdma-core/archive/v44.0/rdma-core-44.0.tar.gz
-Source0  : https://github.com/linux-rdma/rdma-core/archive/v44.0/rdma-core-44.0.tar.gz
+Version  : 45.0
+Release  : 55
+URL      : https://github.com/linux-rdma/rdma-core/archive/v45.0/rdma-core-45.0.tar.gz
+Source0  : https://github.com/linux-rdma/rdma-core/archive/v45.0/rdma-core-45.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 GPL-2.0-only MIT
@@ -146,15 +146,15 @@ staticdev components for the rdma-core package.
 
 
 %prep
-%setup -q -n rdma-core-44.0
-cd %{_builddir}/rdma-core-44.0
+%setup -q -n rdma-core-45.0
+cd %{_builddir}/rdma-core-45.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1672693299
+export SOURCE_DATE_EPOCH=1678719039
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -168,7 +168,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1672693299
+export SOURCE_DATE_EPOCH=1678719039
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f || :
@@ -476,6 +476,7 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man3/ibv_wr_atomic_fetch_add.3
 /usr/share/man/man3/ibv_wr_bind_mw.3
 /usr/share/man/man3/ibv_wr_complete.3
+/usr/share/man/man3/ibv_wr_flush.3
 /usr/share/man/man3/ibv_wr_local_inv.3
 /usr/share/man/man3/ibv_wr_post.3
 /usr/share/man/man3/ibv_wr_rdma_read.3
@@ -741,15 +742,15 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 %defattr(-,root,root,-)
 /usr/lib64/ibacm/libibacmp.so
 /usr/lib64/libefa.so.1
-/usr/lib64/libefa.so.1.2.44.0
+/usr/lib64/libefa.so.1.2.45.0
 /usr/lib64/libibmad.so.5
-/usr/lib64/libibmad.so.5.3.44.0
+/usr/lib64/libibmad.so.5.3.45.0
 /usr/lib64/libibnetdisc.so.5
-/usr/lib64/libibnetdisc.so.5.0.44.0
+/usr/lib64/libibnetdisc.so.5.0.45.0
 /usr/lib64/libibumad.so.3
-/usr/lib64/libibumad.so.3.2.44.0
+/usr/lib64/libibumad.so.3.2.45.0
 /usr/lib64/libibverbs.so.1
-/usr/lib64/libibverbs.so.1.14.44.0
+/usr/lib64/libibverbs.so.1.14.45.0
 /usr/lib64/libibverbs/libbnxt_re-rdmav34.so
 /usr/lib64/libibverbs/libcxgb4-rdmav34.so
 /usr/lib64/libibverbs/libefa-rdmav34.so
@@ -768,13 +769,13 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibverbs/libsiw-rdmav34.so
 /usr/lib64/libibverbs/libvmw_pvrdma-rdmav34.so
 /usr/lib64/libmana.so.1
-/usr/lib64/libmana.so.1.0.44.0
+/usr/lib64/libmana.so.1.0.45.0
 /usr/lib64/libmlx4.so.1
-/usr/lib64/libmlx4.so.1.0.44.0
+/usr/lib64/libmlx4.so.1.0.45.0
 /usr/lib64/libmlx5.so.1
-/usr/lib64/libmlx5.so.1.24.44.0
+/usr/lib64/libmlx5.so.1.24.45.0
 /usr/lib64/librdmacm.so.1
-/usr/lib64/librdmacm.so.1.3.44.0
+/usr/lib64/librdmacm.so.1.3.45.0
 /usr/lib64/rsocket/librspreload.so
 /usr/lib64/rsocket/librspreload.so.1
 /usr/lib64/rsocket/librspreload.so.1.0.0
