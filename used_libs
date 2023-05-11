@@ -2,5 +2,6 @@ ld-linux-x86-64.so.2
 libc.so.6
 libnl-3.so.200
 libnl-route-3.so.200
+libpython3.11.so.1.0
 libsystemd.so.0
 libudev.so.1

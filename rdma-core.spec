@@ -5,10 +5,10 @@
 #
 %define keepstatic 1
 Name     : rdma-core
-Version  : 45.0
-Release  : 56
-URL      : https://github.com/linux-rdma/rdma-core/archive/v45.0/rdma-core-45.0.tar.gz
-Source0  : https://github.com/linux-rdma/rdma-core/archive/v45.0/rdma-core-45.0.tar.gz
+Version  : 46.0
+Release  : 57
+URL      : https://github.com/linux-rdma/rdma-core/archive/v46.0/rdma-core-46.0.tar.gz
+Source0  : https://github.com/linux-rdma/rdma-core/archive/v46.0/rdma-core-46.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 GPL-2.0 GPL-2.0-only MIT
@@ -19,6 +19,8 @@ Requires: rdma-core-lib = %{version}-%{release}
 Requires: rdma-core-libexec = %{version}-%{release}
 Requires: rdma-core-license = %{version}-%{release}
 Requires: rdma-core-man = %{version}-%{release}
+Requires: rdma-core-python = %{version}-%{release}
+Requires: rdma-core-python3 = %{version}-%{release}
 Requires: rdma-core-services = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : libnl-dev
@@ -129,6 +131,24 @@ Group: Default
 man components for the rdma-core package.
 
 
+%package python
+Summary: python components for the rdma-core package.
+Group: Default
+Requires: rdma-core-python3 = %{version}-%{release}
+
+%description python
+python components for the rdma-core package.
+
+
+%package python3
+Summary: python3 components for the rdma-core package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the rdma-core package.
+
+
 %package services
 Summary: services components for the rdma-core package.
 Group: Systemd services
@@ -148,29 +168,44 @@ staticdev components for the rdma-core package.
 
 
 %prep
-%setup -q -n rdma-core-45.0
-cd %{_builddir}/rdma-core-45.0
+%setup -q -n rdma-core-46.0
+cd %{_builddir}/rdma-core-46.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681148878
+export SOURCE_DATE_EPOCH=1683845799
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake .. -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core \
+-DENABLE_STATIC=1
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake .. -DCMAKE_INSTALL_SYSCONFDIR=/usr/share/defaults/rdma-core \
 -DENABLE_STATIC=1
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1681148878
+export SOURCE_DATE_EPOCH=1683845799
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f || :
@@ -180,6 +215,9 @@ cp %{_builddir}/rdma-core-%{version}/ccan/LICENSE.CCO %{buildroot}/usr/share/pac
 cp %{_builddir}/rdma-core-%{version}/ccan/LICENSE.MIT %{buildroot}/usr/share/package-licenses/rdma-core/2807f3f1c4cb33b214defc4c7ab72f7e4e70a305 || :
 cp %{_builddir}/rdma-core-%{version}/debian/copyright %{buildroot}/usr/share/package-licenses/rdma-core/f2fc6fa4595af1508a78a99159506c30865d942f || :
 cp %{_builddir}/rdma-core-%{version}/providers/ipathverbs/COPYING %{buildroot}/usr/share/package-licenses/rdma-core/df75be21090fc8aa92d1175f31b7891432da3d09 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
@@ -196,13 +234,63 @@ rm -f %{buildroot}*/usr/share/defaults/rdma-core/udev/rules.d/70-persistent-ipoi
 pyver=$(pkg-config python3 --modversion)
 rm -rf %{buildroot}/usr/lib/python${pyver}
 ## install_append end
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
+/V3/usr/lib/udev/rdma_rename
 /usr/lib/udev/rdma_rename
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/cmtime
+/V3/usr/bin/dump_fts
+/V3/usr/bin/ib_acme
+/V3/usr/bin/ibacm
+/V3/usr/bin/ibaddr
+/V3/usr/bin/ibcacheedit
+/V3/usr/bin/ibccconfig
+/V3/usr/bin/ibccquery
+/V3/usr/bin/iblinkinfo
+/V3/usr/bin/ibnetdiscover
+/V3/usr/bin/ibping
+/V3/usr/bin/ibportstate
+/V3/usr/bin/ibqueryerrors
+/V3/usr/bin/ibroute
+/V3/usr/bin/ibsrpdm
+/V3/usr/bin/ibstat
+/V3/usr/bin/ibsysstat
+/V3/usr/bin/ibtracert
+/V3/usr/bin/ibv_asyncwatch
+/V3/usr/bin/ibv_devices
+/V3/usr/bin/ibv_devinfo
+/V3/usr/bin/ibv_rc_pingpong
+/V3/usr/bin/ibv_srq_pingpong
+/V3/usr/bin/ibv_uc_pingpong
+/V3/usr/bin/ibv_ud_pingpong
+/V3/usr/bin/ibv_xsrq_pingpong
+/V3/usr/bin/iwpmd
+/V3/usr/bin/mckey
+/V3/usr/bin/perfquery
+/V3/usr/bin/rcopy
+/V3/usr/bin/rdma-ndd
+/V3/usr/bin/rdma_client
+/V3/usr/bin/rdma_server
+/V3/usr/bin/rdma_xclient
+/V3/usr/bin/rdma_xserver
+/V3/usr/bin/riostream
+/V3/usr/bin/rping
+/V3/usr/bin/rstream
+/V3/usr/bin/run_srp_daemon
+/V3/usr/bin/saquery
+/V3/usr/bin/sminfo
+/V3/usr/bin/smpdump
+/V3/usr/bin/smpquery
+/V3/usr/bin/srp_daemon
+/V3/usr/bin/ucmatose
+/V3/usr/bin/udaddy
+/V3/usr/bin/udpong
+/V3/usr/bin/vendstat
 /usr/bin/check_lft_balance.pl
 /usr/bin/cmtime
 /usr/bin/dump_fts
@@ -307,6 +395,15 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libefa.so
+/V3/usr/lib64/libibmad.so
+/V3/usr/lib64/libibnetdisc.so
+/V3/usr/lib64/libibumad.so
+/V3/usr/lib64/libibverbs.so
+/V3/usr/lib64/libmana.so
+/V3/usr/lib64/libmlx4.so
+/V3/usr/lib64/libmlx5.so
+/V3/usr/lib64/librdmacm.so
 /usr/include/infiniband/acm.h
 /usr/include/infiniband/acm_prov.h
 /usr/include/infiniband/arch.h
@@ -739,21 +836,60 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 
 %files doc
 %defattr(0644,root,root,0755)
-%doc /usr/share/doc/rdma\-core/*
+/usr/share/doc/rdma\-core/*
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/ibacm/libibacmp.so
+/V3/usr/lib64/libefa.so.1
+/V3/usr/lib64/libefa.so.1.2.46.0
+/V3/usr/lib64/libibmad.so.5
+/V3/usr/lib64/libibmad.so.5.3.46.0
+/V3/usr/lib64/libibnetdisc.so.5
+/V3/usr/lib64/libibnetdisc.so.5.0.46.0
+/V3/usr/lib64/libibumad.so.3
+/V3/usr/lib64/libibumad.so.3.2.46.0
+/V3/usr/lib64/libibverbs.so.1
+/V3/usr/lib64/libibverbs.so.1.14.46.0
+/V3/usr/lib64/libibverbs/libbnxt_re-rdmav34.so
+/V3/usr/lib64/libibverbs/libcxgb4-rdmav34.so
+/V3/usr/lib64/libibverbs/libefa-rdmav34.so
+/V3/usr/lib64/libibverbs/liberdma-rdmav34.so
+/V3/usr/lib64/libibverbs/libhfi1verbs-rdmav34.so
+/V3/usr/lib64/libibverbs/libhns-rdmav34.so
+/V3/usr/lib64/libibverbs/libipathverbs-rdmav34.so
+/V3/usr/lib64/libibverbs/libirdma-rdmav34.so
+/V3/usr/lib64/libibverbs/libmana-rdmav34.so
+/V3/usr/lib64/libibverbs/libmlx4-rdmav34.so
+/V3/usr/lib64/libibverbs/libmlx5-rdmav34.so
+/V3/usr/lib64/libibverbs/libmthca-rdmav34.so
+/V3/usr/lib64/libibverbs/libocrdma-rdmav34.so
+/V3/usr/lib64/libibverbs/libqedr-rdmav34.so
+/V3/usr/lib64/libibverbs/librxe-rdmav34.so
+/V3/usr/lib64/libibverbs/libsiw-rdmav34.so
+/V3/usr/lib64/libibverbs/libvmw_pvrdma-rdmav34.so
+/V3/usr/lib64/libmana.so.1
+/V3/usr/lib64/libmana.so.1.0.46.0
+/V3/usr/lib64/libmlx4.so.1
+/V3/usr/lib64/libmlx4.so.1.0.46.0
+/V3/usr/lib64/libmlx5.so.1
+/V3/usr/lib64/libmlx5.so.1.24.46.0
+/V3/usr/lib64/librdmacm.so.1
+/V3/usr/lib64/librdmacm.so.1.3.46.0
+/V3/usr/lib64/rsocket/librspreload.so
+/V3/usr/lib64/rsocket/librspreload.so.1
+/V3/usr/lib64/rsocket/librspreload.so.1.0.0
 /usr/lib64/ibacm/libibacmp.so
 /usr/lib64/libefa.so.1
-/usr/lib64/libefa.so.1.2.45.0
+/usr/lib64/libefa.so.1.2.46.0
 /usr/lib64/libibmad.so.5
-/usr/lib64/libibmad.so.5.3.45.0
+/usr/lib64/libibmad.so.5.3.46.0
 /usr/lib64/libibnetdisc.so.5
-/usr/lib64/libibnetdisc.so.5.0.45.0
+/usr/lib64/libibnetdisc.so.5.0.46.0
 /usr/lib64/libibumad.so.3
-/usr/lib64/libibumad.so.3.2.45.0
+/usr/lib64/libibumad.so.3.2.46.0
 /usr/lib64/libibverbs.so.1
-/usr/lib64/libibverbs.so.1.14.45.0
+/usr/lib64/libibverbs.so.1.14.46.0
 /usr/lib64/libibverbs/libbnxt_re-rdmav34.so
 /usr/lib64/libibverbs/libcxgb4-rdmav34.so
 /usr/lib64/libibverbs/libefa-rdmav34.so
@@ -772,13 +908,13 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/lib64/libibverbs/libsiw-rdmav34.so
 /usr/lib64/libibverbs/libvmw_pvrdma-rdmav34.so
 /usr/lib64/libmana.so.1
-/usr/lib64/libmana.so.1.0.45.0
+/usr/lib64/libmana.so.1.0.46.0
 /usr/lib64/libmlx4.so.1
-/usr/lib64/libmlx4.so.1.0.45.0
+/usr/lib64/libmlx4.so.1.0.46.0
 /usr/lib64/libmlx5.so.1
-/usr/lib64/libmlx5.so.1.24.45.0
+/usr/lib64/libmlx5.so.1.24.46.0
 /usr/lib64/librdmacm.so.1
-/usr/lib64/librdmacm.so.1.3.45.0
+/usr/lib64/librdmacm.so.1.3.46.0
 /usr/lib64/rsocket/librspreload.so
 /usr/lib64/rsocket/librspreload.so.1
 /usr/lib64/rsocket/librspreload.so.1.0.0
@@ -869,6 +1005,13 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man8/smpquery.8
 /usr/share/man/man8/srp_daemon.8
 /usr/share/man/man8/vendstat.8
+
+%files python
+%defattr(-,root,root,-)
+
+%files python3
+%defattr(-,root,root,-)
+/V3/usr/lib/python3*/*
 
 %files services
 %defattr(-,root,root,-)
