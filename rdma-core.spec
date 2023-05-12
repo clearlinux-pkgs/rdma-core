@@ -6,7 +6,7 @@
 %define keepstatic 1
 Name     : rdma-core
 Version  : 46.0
-Release  : 57
+Release  : 58
 URL      : https://github.com/linux-rdma/rdma-core/archive/v46.0/rdma-core-46.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v46.0/rdma-core-46.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -19,8 +19,6 @@ Requires: rdma-core-lib = %{version}-%{release}
 Requires: rdma-core-libexec = %{version}-%{release}
 Requires: rdma-core-license = %{version}-%{release}
 Requires: rdma-core-man = %{version}-%{release}
-Requires: rdma-core-python = %{version}-%{release}
-Requires: rdma-core-python3 = %{version}-%{release}
 Requires: rdma-core-services = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : libnl-dev
@@ -131,24 +129,6 @@ Group: Default
 man components for the rdma-core package.
 
 
-%package python
-Summary: python components for the rdma-core package.
-Group: Default
-Requires: rdma-core-python3 = %{version}-%{release}
-
-%description python
-python components for the rdma-core package.
-
-
-%package python3
-Summary: python3 components for the rdma-core package.
-Group: Default
-Requires: python3-core
-
-%description python3
-python3 components for the rdma-core package.
-
-
 %package services
 Summary: services components for the rdma-core package.
 Group: Systemd services
@@ -176,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683845799
+export SOURCE_DATE_EPOCH=1683900684
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -205,7 +185,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683845799
+export SOURCE_DATE_EPOCH=1683900684
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f || :
@@ -232,7 +212,7 @@ rm -f %{buildroot}*/usr/share/defaults/rdma-core/srp_daemon.conf
 rm -f %{buildroot}*/usr/share/defaults/rdma-core/udev/rules.d/70-persistent-ipoib.rules
 ## install_append content
 pyver=$(pkg-config python3 --modversion)
-rm -rf %{buildroot}/usr/lib/python${pyver}
+rm -rf %{buildroot}*/usr/lib/python${pyver}
 ## install_append end
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
@@ -1005,13 +985,6 @@ rm -rf %{buildroot}/usr/lib/python${pyver}
 /usr/share/man/man8/smpquery.8
 /usr/share/man/man8/srp_daemon.8
 /usr/share/man/man8/vendstat.8
-
-%files python
-%defattr(-,root,root,-)
-
-%files python3
-%defattr(-,root,root,-)
-/V3/usr/lib/python3*/*
 
 %files services
 %defattr(-,root,root,-)
