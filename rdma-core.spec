@@ -6,7 +6,7 @@
 %define keepstatic 1
 Name     : rdma-core
 Version  : 46.0
-Release  : 58
+Release  : 59
 URL      : https://github.com/linux-rdma/rdma-core/archive/v46.0/rdma-core-46.0.tar.gz
 Source0  : https://github.com/linux-rdma/rdma-core/archive/v46.0/rdma-core-46.0.tar.gz
 Summary  : RDMA core userspace libraries and daemons
@@ -156,7 +156,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683900684
+export SOURCE_DATE_EPOCH=1685510130
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -185,7 +185,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683900684
+export SOURCE_DATE_EPOCH=1685510130
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/rdma-core
 cp %{_builddir}/rdma-core-%{version}/COPYING.BSD_FB %{buildroot}/usr/share/package-licenses/rdma-core/133cf03905c2dc7d8a061e1d6e9ced3117b0120f || :
@@ -237,7 +237,6 @@ rm -rf %{buildroot}*/usr/lib/python${pyver}
 /V3/usr/bin/ibportstate
 /V3/usr/bin/ibqueryerrors
 /V3/usr/bin/ibroute
-/V3/usr/bin/ibsrpdm
 /V3/usr/bin/ibstat
 /V3/usr/bin/ibsysstat
 /V3/usr/bin/ibtracert
@@ -261,7 +260,6 @@ rm -rf %{buildroot}*/usr/lib/python${pyver}
 /V3/usr/bin/riostream
 /V3/usr/bin/rping
 /V3/usr/bin/rstream
-/V3/usr/bin/run_srp_daemon
 /V3/usr/bin/saquery
 /V3/usr/bin/sminfo
 /V3/usr/bin/smpdump
@@ -375,15 +373,6 @@ rm -rf %{buildroot}*/usr/lib/python${pyver}
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libefa.so
-/V3/usr/lib64/libibmad.so
-/V3/usr/lib64/libibnetdisc.so
-/V3/usr/lib64/libibumad.so
-/V3/usr/lib64/libibverbs.so
-/V3/usr/lib64/libmana.so
-/V3/usr/lib64/libmlx4.so
-/V3/usr/lib64/libmlx5.so
-/V3/usr/lib64/librdmacm.so
 /usr/include/infiniband/acm.h
 /usr/include/infiniband/acm_prov.h
 /usr/include/infiniband/arch.h
@@ -821,44 +810,29 @@ rm -rf %{buildroot}*/usr/lib/python${pyver}
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/ibacm/libibacmp.so
-/V3/usr/lib64/libefa.so.1
 /V3/usr/lib64/libefa.so.1.2.46.0
-/V3/usr/lib64/libibmad.so.5
 /V3/usr/lib64/libibmad.so.5.3.46.0
-/V3/usr/lib64/libibnetdisc.so.5
 /V3/usr/lib64/libibnetdisc.so.5.0.46.0
-/V3/usr/lib64/libibumad.so.3
 /V3/usr/lib64/libibumad.so.3.2.46.0
-/V3/usr/lib64/libibverbs.so.1
 /V3/usr/lib64/libibverbs.so.1.14.46.0
 /V3/usr/lib64/libibverbs/libbnxt_re-rdmav34.so
 /V3/usr/lib64/libibverbs/libcxgb4-rdmav34.so
-/V3/usr/lib64/libibverbs/libefa-rdmav34.so
 /V3/usr/lib64/libibverbs/liberdma-rdmav34.so
 /V3/usr/lib64/libibverbs/libhfi1verbs-rdmav34.so
 /V3/usr/lib64/libibverbs/libhns-rdmav34.so
 /V3/usr/lib64/libibverbs/libipathverbs-rdmav34.so
 /V3/usr/lib64/libibverbs/libirdma-rdmav34.so
-/V3/usr/lib64/libibverbs/libmana-rdmav34.so
-/V3/usr/lib64/libibverbs/libmlx4-rdmav34.so
-/V3/usr/lib64/libibverbs/libmlx5-rdmav34.so
 /V3/usr/lib64/libibverbs/libmthca-rdmav34.so
 /V3/usr/lib64/libibverbs/libocrdma-rdmav34.so
 /V3/usr/lib64/libibverbs/libqedr-rdmav34.so
 /V3/usr/lib64/libibverbs/librxe-rdmav34.so
 /V3/usr/lib64/libibverbs/libsiw-rdmav34.so
 /V3/usr/lib64/libibverbs/libvmw_pvrdma-rdmav34.so
-/V3/usr/lib64/libmana.so.1
 /V3/usr/lib64/libmana.so.1.0.46.0
-/V3/usr/lib64/libmlx4.so.1
 /V3/usr/lib64/libmlx4.so.1.0.46.0
-/V3/usr/lib64/libmlx5.so.1
 /V3/usr/lib64/libmlx5.so.1.24.46.0
-/V3/usr/lib64/librdmacm.so.1
 /V3/usr/lib64/librdmacm.so.1.3.46.0
 /V3/usr/lib64/rsocket/librspreload.so
-/V3/usr/lib64/rsocket/librspreload.so.1
-/V3/usr/lib64/rsocket/librspreload.so.1.0.0
 /usr/lib64/ibacm/libibacmp.so
 /usr/lib64/libefa.so.1
 /usr/lib64/libefa.so.1.2.46.0
