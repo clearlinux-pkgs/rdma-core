@@ -14,6 +14,7 @@ libhns.so.1:hnsdv_create_qp@@HNS_1.0
 libhns.so.1:hnsdv_is_supported@@HNS_1.0
 libhns.so.1:hnsdv_query_device@@HNS_1.0
 libibmad.so.5:IBMAD_1.3
+libibmad.so.5:IBMAD_1.4
 libibmad.so.5:bm_call_via@@IBMAD_1.3
 libibmad.so.5:cc_config_status_via@@IBMAD_1.3
 libibmad.so.5:cc_query_status_via@@IBMAD_1.3
@@ -59,8 +60,11 @@ libibmad.so.5:mad_dump_int@@IBMAD_1.3
 libibmad.so.5:mad_dump_linkdowndefstate@@IBMAD_1.3
 libibmad.so.5:mad_dump_linkspeed@@IBMAD_1.3
 libibmad.so.5:mad_dump_linkspeeden@@IBMAD_1.3
+libibmad.so.5:mad_dump_linkspeedext2@@IBMAD_1.4
 libibmad.so.5:mad_dump_linkspeedext@@IBMAD_1.3
+libibmad.so.5:mad_dump_linkspeedexten2@@IBMAD_1.4
 libibmad.so.5:mad_dump_linkspeedexten@@IBMAD_1.3
+libibmad.so.5:mad_dump_linkspeedextsup2@@IBMAD_1.4
 libibmad.so.5:mad_dump_linkspeedextsup@@IBMAD_1.3
 libibmad.so.5:mad_dump_linkspeedsup@@IBMAD_1.3
 libibmad.so.5:mad_dump_linkwidth@@IBMAD_1.3
@@ -457,6 +461,7 @@ libmlx5.so.1:MLX5_1.21
 libmlx5.so.1:MLX5_1.22
 libmlx5.so.1:MLX5_1.23
 libmlx5.so.1:MLX5_1.24
+libmlx5.so.1:MLX5_1.25
 libmlx5.so.1:MLX5_1.3
 libmlx5.so.1:MLX5_1.4
 libmlx5.so.1:MLX5_1.5
@@ -567,6 +572,7 @@ libmlx5.so.1:mlx5dv_dump_dr_rule@@MLX5_1.12
 libmlx5.so.1:mlx5dv_dump_dr_table@@MLX5_1.12
 libmlx5.so.1:mlx5dv_free_var@@MLX5_1.12
 libmlx5.so.1:mlx5dv_get_clock_info@@MLX5_1.4
+libmlx5.so.1:mlx5dv_get_data_direct_sysfs_path@@MLX5_1.25
 libmlx5.so.1:mlx5dv_get_vfio_device_list@@MLX5_1.21
 libmlx5.so.1:mlx5dv_init_obj@@MLX5_1.2
 libmlx5.so.1:mlx5dv_init_obj@MLX5_1.0
@@ -582,6 +588,7 @@ libmlx5.so.1:mlx5dv_qp_cancel_posted_send_wrs@@MLX5_1.20
 libmlx5.so.1:mlx5dv_qp_ex_from_ibv_qp_ex@@MLX5_1.10
 libmlx5.so.1:mlx5dv_query_device@@MLX5_1.0
 libmlx5.so.1:mlx5dv_query_qp_lag_port@@MLX5_1.14
+libmlx5.so.1:mlx5dv_reg_dmabuf_mr@@MLX5_1.25
 libmlx5.so.1:mlx5dv_reserved_qpn_alloc@@MLX5_1.18
 libmlx5.so.1:mlx5dv_reserved_qpn_dealloc@@MLX5_1.18
 libmlx5.so.1:mlx5dv_sched_leaf_create@@MLX5_1.17
