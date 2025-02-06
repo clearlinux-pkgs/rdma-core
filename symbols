@@ -15,6 +15,7 @@ libhns.so.1:hnsdv_is_supported@@HNS_1.0
 libhns.so.1:hnsdv_query_device@@HNS_1.0
 libibmad.so.5:IBMAD_1.3
 libibmad.so.5:IBMAD_1.4
+libibmad.so.5:IBMAD_1.5
 libibmad.so.5:bm_call_via@@IBMAD_1.3
 libibmad.so.5:cc_config_status_via@@IBMAD_1.3
 libibmad.so.5:cc_query_status_via@@IBMAD_1.3
@@ -133,7 +134,9 @@ libibmad.so.5:mad_respond@@IBMAD_1.3
 libibmad.so.5:mad_respond_via@@IBMAD_1.3
 libibmad.so.5:mad_rpc@@IBMAD_1.3
 libibmad.so.5:mad_rpc_class_agent@@IBMAD_1.3
+libibmad.so.5:mad_rpc_close_port2@@IBMAD_1.5
 libibmad.so.5:mad_rpc_close_port@@IBMAD_1.3
+libibmad.so.5:mad_rpc_open_port2@@IBMAD_1.5
 libibmad.so.5:mad_rpc_open_port@@IBMAD_1.3
 libibmad.so.5:mad_rpc_portid@@IBMAD_1.3
 libibmad.so.5:mad_rpc_rmpp@@IBMAD_1.3
@@ -201,6 +204,7 @@ libibumad.so.3:IBUMAD_1.0
 libibumad.so.3:IBUMAD_1.1
 libibumad.so.3:IBUMAD_1.2
 libibumad.so.3:IBUMAD_1.3
+libibumad.so.3:IBUMAD_1.4
 libibumad.so.3:umad_addr_dump@@IBUMAD_1.0
 libibumad.so.3:umad_attribute_str@@IBUMAD_1.0
 libibumad.so.3:umad_class_str@@IBUMAD_1.0
@@ -220,6 +224,8 @@ libibumad.so.3:umad_get_mad@@IBUMAD_1.0
 libibumad.so.3:umad_get_mad_addr@@IBUMAD_1.0
 libibumad.so.3:umad_get_pkey@@IBUMAD_1.0
 libibumad.so.3:umad_get_port@@IBUMAD_1.0
+libibumad.so.3:umad_get_smi_gsi_pair_by_ca_name@@IBUMAD_1.4
+libibumad.so.3:umad_get_smi_gsi_pairs@@IBUMAD_1.4
 libibumad.so.3:umad_init@@IBUMAD_1.0
 libibumad.so.3:umad_method_str@@IBUMAD_1.0
 libibumad.so.3:umad_open_port@@IBUMAD_1.0
